@@ -10,8 +10,8 @@
 ## 2.1 前言
 本SDK旨在提供给深圳同创新佳科技有限公司，基于斯必拓高频读卡模块的设备对Mifare卡片制卡相关的业务功能
 ## 2.2 SDK集成
-* 复制Demo中libs/locstarcardApi_X.X.X.aar到工程libs/目录下
-* 在module的gradle中添加依赖：
+* 复制`LocStarCardDemo`中`app/libs/locstarcardApi_X.X.X.aar`到工程libs/目录下
+* 在`module`的`gradle`中添加依赖：
 ```
 dependencies {
     implementation(name: 'locstarcardApi_1.0.0', ext: 'aar')
