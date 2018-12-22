@@ -8,7 +8,7 @@
 7. 注销卡片：将选定扇区的客人卡数据恢复到初始状态，即将开始时间、结束时间、房间信息置为FF
 # 2 SDK说明
 ## 2.1 前言
-本SDK旨在提供给深圳同创新佳科技有限公司，基于斯必拓高频读卡模块的设备对Mifare卡片制卡相关相关业务功能
+本SDK旨在提供给深圳同创新佳科技有限公司，基于斯必拓高频读卡模块的设备对Mifare卡片制卡相关的业务功能
 ## 2.2 SDK集成
 * 复制Demo中libs/locstarcardApi_X.X.X.aar到工程libs/目录下
 * 在module的gradle中添加依赖：
@@ -17,4 +17,22 @@ dependencies {
     implementation(name: 'locstarcardApi_1.0.0', ext: 'aar')
 }
 ```
-
+## 2.3 接口API
+### 2.3.1 SDK实例化
+1. CardManager.getInstance()即可获取调用相关API的实例。
+| API       | getInstance        | 备注     |
+| --------  | --------           | -------- |
+| 入参      | 无                 |          |
+| --------  | --------           | -------- |
+| 出参      | CardManager实例    |          |
+### 2.3.2 SDK初始化
+1. 请务必在应用程序初始化时调用此方法以进行SDK的初始化。
+| API       | init               | 备注     |
+| --------  | --------           | -------- |
+| 入参      | 无                 |          |
+| --------  | --------           | -------- |
+| 出参      | 无                 |          |
+2. 示例
+```
+CardManager.getInstance().init();
+```
