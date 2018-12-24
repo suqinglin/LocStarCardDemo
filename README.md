@@ -16,12 +16,63 @@ dependencies {
     implementation(name: 'locstarcardApi_1.0.0', ext: 'aar')
 }
 ```
+## 2.3 总体说明
+* `CardManager`是接口调用的统一对象
+* `Result`是接口请求返回的基类
+1. 返回结果编号
+```
+/**
+ * 获取结果编号
+ * @return 结果编号
+ */
+public int getResultCode();
+```
+结果编号：
+
+| 代码                 | 编号        |说明             |
+| ---------------      | ----------- | --------------- |
+| STATUS_SUCC          | 10000       | 成功            |
+| STATUS_AUTH_FAIL     | 20000       | 密码错误        |
+| STATUS_NO_CARD_FOUND | 20001       | 没有发现卡片    |
+| STATUS_DATA_LOSE     | 20002       | 读卡数据不完整  |
+| STATUS_WRITE_FAIL    | 20003       | 写入数据失败    |
+2. `GetCardIdResult`获取卡号结果，继承自`Result`
+```
+/**
+ * 获取卡号
+ * @return 卡号
+ */
+public String getCardId();
+```
+3. `ReadCardResult`读取客人卡结果，继承自`Result`
+```
+/**
+ * 获取卡片信息
+ * @return 卡片信息对象
+ */
+public CardInfo getCardInfo();
+```
+4. `CardInfo`为卡片信息对象
+```
+// 卡片是否已注销，true为已注销
+public boolean isUnRegister();
+// 卡号
+public String getCardId()
+// 房间号，如08050200表示：楼栋号为08，楼层号为05，房间号为02，子房间号为00
+public String getRoomNum();
+// 开始时间，毫秒数/1000
+public long getStartTime();
+// 结束时间，毫秒数/1000
+public long getEndTime();
+// 卡片是否已挂失，true为已挂失
+public boolean isLoss();
+```
 ## 2.3 接口API
 ### 2.3.1 SDK实例化
-1. CardManager.getInstance()即可获取调用相关API的实例。
+1. `CardManager.getInstance()`即可获取调用相关API的实例。
 
 | API       | getInstance        | 备注     |
-| --------  | -------- | -------- |
+| --------  | --------           | -------- |
 | 入参      | 无                 |          |
 | 出参      | CardManager实例    |          |
 
@@ -29,7 +80,7 @@ dependencies {
 1. 请务必在应用程序初始化时调用此方法以进行SDK的初始化。
 
 | API       | init               | 备注     |
-| -------- | -------- | -------- |
+| --------  | --------           | -------- |
 | 入参      | 无                 |          |
 | 出参      | 无                 |          |
 
