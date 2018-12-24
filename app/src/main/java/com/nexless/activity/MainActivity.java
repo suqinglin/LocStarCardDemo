@@ -34,7 +34,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.main_rl_read_card).setOnClickListener(this);
         findViewById(R.id.main_rl_write_card).setOnClickListener(this);
         findViewById(R.id.main_rl_cancel_card).setOnClickListener(this);
-        findViewById(R.id.main_rl_setAuthCard).setOnClickListener(this);
     }
 
     @Override
@@ -44,7 +43,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 Log.i("TAG", "main_rl_setSector");
                 new AlertDialog.Builder(this)
                         .setTitle("请选择扇区")
-                        .setSingleChoiceItems(getSectorArray(), Integer.valueOf(tvSector.getText().toString()) - 1, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(getSectorArray(), Integer.valueOf(tvSector.getText().toString()), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 sectorIndex = which;
@@ -54,7 +53,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if (sectorIndex > 0) {
-                                    tvSector.setText(String.valueOf(sectorIndex + 1));
+                                    tvSector.setText(String.valueOf(sectorIndex));
                                     CardManager.getInstance().setSectorIndex(sectorIndex);
                                 }
                             }
@@ -127,9 +126,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                             }
                         })
                         .show();
-                break;
-            case R.id.main_rl_setAuthCard:
-                startActivity(new Intent(MainActivity.this, WriteAuthCardActivity.class));
                 break;
         }
     }

@@ -1,6 +1,5 @@
 package com.nexless.activity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -15,16 +14,11 @@ import android.widget.TimePicker;
 
 import com.nexless.locstarcard.CardManager;
 import com.nexless.locstarcard.Utils.Constants;
-import com.nexless.locstarcard.bean.GetCardIdResult;
 import com.nexless.locstarcard.bean.Result;
 import com.nexless.locstarcarddemo.R;
 import com.nexless.utils.DateUtil;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 /**
  * @date: 2018/12/19

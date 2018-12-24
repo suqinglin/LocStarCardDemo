@@ -3,10 +3,7 @@ package com.nexless.activity;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nexless.locstarcard.CardManager;
 import com.nexless.locstarcard.Utils.Constants;
@@ -39,10 +36,14 @@ public class ReadCardActivity extends Activity {
             CardInfo cardInfo = result.getCardInfo();
             tvTip.append("读卡成功");
             tvResult.append("\n\n卡号：" + cardInfo.getCardId());
-            tvResult.append("\n\n开始时间：" + DateUtil.longToString(cardInfo.getStartTime()));
-            tvResult.append("\n\n结束时间：" + DateUtil.longToString(cardInfo.getEndTime()));
-            tvResult.append("\n\n房间号：" + cardInfo.getRoomNum());
-            tvResult.append("\n\n是否挂失：" + (cardInfo.isLoss() ? "是" : "否"));
+            if (!cardInfo.isUnRegister()) {
+                tvResult.append("\n\n开始时间：" + DateUtil.longToString(cardInfo.getStartTime()));
+                tvResult.append("\n\n结束时间：" + DateUtil.longToString(cardInfo.getEndTime()));
+                tvResult.append("\n\n房间号：" + cardInfo.getRoomNum());
+                tvResult.append("\n\n是否挂失：" + (cardInfo.isLoss() ? "是" : "否"));
+            } else {
+                tvResult.append("\n\n此卡片已注销");
+            }
             tvTip.setTextColor(Color.GREEN);
         } else {
             tvTip.append("错误代码：" + result.getResultCode());

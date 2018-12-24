@@ -22,7 +22,6 @@
         </activity>
         <activity android:name="com.nexless.activity.ReadCardActivity"/>
         <activity android:name="com.nexless.activity.WriteCardActivity"/>
-        <activity android:name="com.nexless.activity.WriteAuthCardActivity" />
     </application>
 
 </manifest>
