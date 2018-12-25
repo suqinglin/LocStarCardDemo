@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.nexless.locstarcard.CardManager;
-import com.nexless.locstarcard.Utils.Constants;
 import com.nexless.locstarcard.bean.Result;
 import com.nexless.locstarcarddemo.R;
 import com.nexless.utils.DateUtil;
@@ -199,7 +198,7 @@ public class WriteCardActivity extends BaseActivity implements View.OnClickListe
         int childHouseNum = Integer.valueOf(childHouseNumStr);
 
         Result result = CardManager.getInstance().writeCard(start, end, buildNum, floorNum, houseNum, childHouseNum);
-        if (result.getResultCode() == Constants.STATUS_SUCC) {
+        if (result.getResultCode() == Result.STATUS_SUCC) {
             showToast("写卡成功");
             onBackPressed();
         } else {

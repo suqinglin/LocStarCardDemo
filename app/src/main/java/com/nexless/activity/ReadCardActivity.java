@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.nexless.locstarcard.CardManager;
-import com.nexless.locstarcard.Utils.Constants;
 import com.nexless.locstarcard.bean.CardInfo;
 import com.nexless.locstarcard.bean.ReadCardResult;
+import com.nexless.locstarcard.bean.Result;
 import com.nexless.locstarcarddemo.R;
 import com.nexless.utils.DateUtil;
 
@@ -32,7 +32,7 @@ public class ReadCardActivity extends Activity {
         tvResult = findViewById(R.id.readCard_tv_result);
 
         ReadCardResult result = CardManager.getInstance().readCard();
-        if (result.getResultCode() == Constants.STATUS_SUCC && result.getCardInfo() != null) {
+        if (result.getResultCode() == Result.STATUS_SUCC && result.getCardInfo() != null) {
             CardInfo cardInfo = result.getCardInfo();
             tvTip.append("读卡成功");
             tvResult.append("\n\n卡号：" + cardInfo.getCardId());
