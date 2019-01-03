@@ -84,11 +84,11 @@ CardManager.getInstance();
 
 | API       | init               | 备注     |
 | --------  | --------           | -------- |
-| 入参      | 无                 |          |
+| 入参      | Context            | 上下文   |
 | 出参      | 无                 |          |
 2. 示例
 ```
-CardManager.getInstance().init();
+CardManager.getInstance().init(this);
 ```
 ### 2.4.3 设置Debug
 1. 说明：Debug模式设置为true时，sdk里面的日志将会打印输出
