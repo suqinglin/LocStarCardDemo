@@ -1,3 +1,4 @@
+[TOC]
 # 1 DEMO使用说明
 1. 在进行以下操作时，请选择扇区，默认扇区为11扇区
 2. 使用前，客人卡和授权卡的密码B均需提前置为约定的默认密码，由于所有操作均为主动与卡片交互，请在进行以下任何操作前将卡片靠近读卡区
@@ -36,6 +37,8 @@ public int getResultCode();
 | STATUS_NO_CARD_FOUND | 20001       | 没有发现卡片    |
 | STATUS_DATA_LOSE     | 20002       | 读卡数据不完整  |
 | STATUS_WRITE_FAIL    | 20003       | 写入数据失败    |
+| STATUS_ROOM_NUM_FORMAT_ERROR    | 20004       | 房间号格式错误    |
+| STATUS_NOT_AUTH_CARD | 20005       | 获取授权时读取到的卡片不是授权卡    |
 ### 2.3.2 `GetCardIdResult`获取卡号结果，继承自`Result`
 ```
 /**
@@ -170,10 +173,10 @@ if (result.getResultCode() == Result.STATUS_SUCC && result.getCardInfo() != null
 | 出参      | Result              | 见`2.3.1 `|
 2. 备注：
 * 开始时间与结束时间为时间毫秒数/1000
-* 楼栋号，楼层号，房间号，子房号为两位数字整型
+* 房间号格式必须按照`XX-XX-XX-XX`传入，如：`1-20-3-40`
 3. 示例
 ```
-Result result = CardManager.getInstance().writeCard(start, end, buildNum, floorNum, houseNum, childHouseNum);
+Result result = CardManager.getInstance().writeCard(start, end, buildNum + "-" + floorNum + "-" + houseNum + "-" + childHouseNum);
 if (result.getResultCode() == Result.STATUS_SUCC) {
     showToast("写卡成功");
     onBackPressed();

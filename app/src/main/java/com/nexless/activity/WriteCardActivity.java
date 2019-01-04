@@ -197,7 +197,7 @@ public class WriteCardActivity extends BaseActivity implements View.OnClickListe
         int houseNum = Integer.valueOf(houseNumStr);
         int childHouseNum = Integer.valueOf(childHouseNumStr);
 
-        Result result = CardManager.getInstance().writeCard(start, end, buildNum, floorNum, houseNum, childHouseNum);
+        Result result = CardManager.getInstance().writeCard(start, end, buildNum + "-" + floorNum + "-" + houseNum + "-" + childHouseNum);
         if (result.getResultCode() == Result.STATUS_SUCC) {
             showToast("写卡成功");
             onBackPressed();
