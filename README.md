@@ -173,7 +173,7 @@ if (result.getResultCode() == Result.STATUS_SUCC && result.getCardInfo() != null
 | 出参      | Result              | 见`2.3.1 `|
 2. 备注：
 * 开始时间与结束时间为时间毫秒数/1000
-* 房间号格式必须按照`XX-XX-XX-XX`传入，如：`1-20-3-40`
+* 房间号格式必须按照`XX-XX-XX-XX`格式传入，如：`1-20-3-40`
 3. 示例
 ```
 Result result = CardManager.getInstance().writeCard(start, end, buildNum + "-" + floorNum + "-" + houseNum + "-" + childHouseNum);
